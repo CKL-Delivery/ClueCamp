@@ -1,0 +1,21 @@
+from adafruit_slideshow import SlideShow, PlayBackDirection
+from adafruit_clue import clue
+import board
+slideshow = SlideShow(
+    board.DISPLAY,
+    None,
+    folder="/Popsicle/",
+    loop=True,
+    dwell=0,
+)
+roomtemp = clue.temperature
+hot = 100
+hotter = 100
+while True:
+        if clue.temperature > roomtemp + 2:
+            slideshow.direction = PlayBackDirection.FORWARD
+            slideshow.advance()
+            hot = clue.temperature
+        if clue.temperature > hot + 2:
+            slideshow.direction = PlayBackDirection.FORWARD
+            slideshow.advance()
