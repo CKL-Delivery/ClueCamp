@@ -1,0 +1,36 @@
+from adafruit_slideshow import SlideShow, PlayBackDirection
+from adafruit_clue import clue
+import board
+
+slideshow = SlideShow(
+    board.DISPLAY,
+    None,
+    folder="/Popsicle/",
+    loop=True,
+    dwell=0,
+)
+
+while True:
+    if slideshow.current_slide_name == "1.bmp":
+        if clue.temperature > 25 and clue.temperature < 30:
+            slideshow.direction = PlayBackDirection.FORWARD
+            slideshow.advance()
+        elif clue.temperature >= 30:
+            slideshow.direction = PlayBackDirection.FORWARD
+            slideshow.advance()
+            slideshow.advance()
+    elif slideshow.current_slide_name == "2.bmp":
+        if clue.temperature <= 25:
+            slideshow.direction = PlayBackDirection.BACKWARD
+            slideshow.advance()
+        elif clue.temperature >= 30:
+            slideshow.direction = PlayBackDirection.FORWARD
+            slideshow.advance()
+    elif slideshow.current_slide_name == "3.bmp":
+        if clue.temperature <= 25:
+            slideshow.direction == PlayBackDirection.BACKWARD
+            slideshow.advance()
+            slideshow.advance()
+        elif clue.temperature > 25 and clue.temperature < 30:
+            slideshow.direction == PlayBackDirection.BACKWARD
+            slideshow.advance()
