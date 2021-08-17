@@ -1,0 +1,20 @@
+# Write your code here :-)
+from adafruit_clue import clue
+from adafruit_slideshow import SlideShow, PlayBackDirection
+import board
+slideshow = SlideShow(
+    board.DISPLAY,
+    None,
+    folder="/StopLight/",
+    loop=True,
+    dwell=0,
+    fade_effect = False,
+)
+while True:
+    if clue.proximity > 25:
+        slideshow.direction = PlayBackDirection.FORWARD
+        slideshow.advance()
+    elif clue.proximity > 100:
+        slideshow.direction = PlayBackDirection.FORWARD
+        slideshow.advance()
+        slideshow.advance()
