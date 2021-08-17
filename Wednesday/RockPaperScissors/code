@@ -1,0 +1,27 @@
+from adafruit_slideshow import SlideShow, PlayBackDirection
+import board
+slideshow = SlideShow(
+    board.DISPLAY,
+    None,
+    folder="/RockPaperScissors/",
+    loop=True,
+    dwell=0,
+    fade_effect = False,
+)
+while True:
+    value = clue.gesture
+    #Swipe Up
+    if value == 1:
+        slideshow.direction = PlayBackDirection.FORWARD
+        slideshow.advance()
+    #Swipe Down
+    elif value == 2:
+        slideshow.direction = PlayBackDirection.FORWARD
+        slideshow.advance()
+        slideshow.advance()
+    #Swipe Left
+    elif value == 3:
+        slideshow.direction = PlayBackDirection.FORWARD
+        slideshow.advance()
+        slideshow.advance()
+        slideshow.advance()
