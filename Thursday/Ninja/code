@@ -1,0 +1,27 @@
+from adafruit_slideshow import SlideShow, PlayBackDirection
+import board
+from adafruit_clue import clue
+slideshow = SlideShow(
+    board.DISPLAY,
+    None,
+    folder="/1/",
+    auto_advance = True,
+    loop=True,
+    dwell=1,
+    fade_effect = True,
+)
+
+while True:
+    if clue.loud_sound(sound_threshold=100):
+        slideshow = SlideShow(
+        board.DISPLAY,
+        None,
+        folder="/2/",
+        auto_advance = True,
+        loop=True,
+        dwell=0,
+        fade_effect = False,
+        )
+        slideshow.direction = PlayBackDirection.FORWARD
+        slideshow.advance()
+        clue.play_tone(880, 1)
