@@ -1,0 +1,14 @@
+from adafruit_clue import clue
+
+clue_display = clue.simple_text_display(text_scale=3, colors=(clue.WHITE,))
+
+clue_display[0].text = "Sound &"
+clue_display[1].text = "Microphone"
+
+while True:
+    if clue.loud_sound(sound_threshold=300):
+        clue.pixel.fill((0, 50, 0))
+        clue.play_tone(880, 1)
+    else:
+        clue.pixel.fill(0)
+    clue_display.show()
