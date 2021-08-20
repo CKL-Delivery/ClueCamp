@@ -26,6 +26,10 @@ begg_sprite = displayio.TileGrid(
     pixel_shader=getattr(begg_bmp, 'pixel_shader', displayio.ColorConverter())
 )
 
+# # CircuitPython 7+ compatible
+# begg_bmp = displayio.OnDiskBitmap(BAD_EGG_FILENAME)
+# begg_sprite = displayio.TileGrid(begg_bmp, pixel_shader=begg_bmp.pixel_shader)
+
 # good egg
 GOOD_EGG_FILENAME = "good_egg.bmp"
 
