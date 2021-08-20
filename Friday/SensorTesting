@@ -1,0 +1,15 @@
+# Write your code here :-)
+from adafruit_clue import clue
+
+clue_display = clue.simple_text_display(text_scale=2,colors=(clue.WHITE,))
+
+clue_display[0].text = "Acceleration &"
+clue_display[1].text = "Gyroscope"
+
+while True:
+    acceleration = clue.acceleration
+    gyroscope = clue.gyro
+
+    clue_display[3].text = "Accel: {:.1f} {:.1f} {:.1f}".format(*clue.acceleration)
+    clue_display[5].text = "Gyro: {:.1f} {:.1f} {:.1f}".format(*clue.gyro)
+    clue_display.show()
